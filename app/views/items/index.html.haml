@@ -1,0 +1,14 @@
+.row
+  -@items.each do |r|
+    .col-md-4.col-sm-6.col-xs-12
+      .panel.panel-default
+        .panel-body
+          .row
+            .col-md-4
+              =r.name
+            .col-md-4
+              =r.last_replaced
+            .col-md-4
+              .pull-right
+                .btn.btn-info.btn-sm
+                  Replace

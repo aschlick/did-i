@@ -1,0 +1,2 @@
+class Replacement < ApplicationRecord
+end
