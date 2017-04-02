@@ -1,14 +1,21 @@
 .row
-  -@items.each do |r|
+  -@items.each do |i|
     .col-md-4.col-sm-6.col-xs-12
       .panel.panel-default
         .panel-body
           .row
             .col-md-4
-              =r.name
+              =i.name
             .col-md-4
-              =r.last_replaced
+              =i.last_replaced
             .col-md-4
               .pull-right
-                .btn.btn-info.btn-sm
-                  Replace
+                =button_to 'Replace', item_replacements_url(i.id), { remote: true, class: 'btn btn-info btn-sm' }
+  .col-md-4.col-sm-6.col-xs-12
+    .panel.panel-default
+      .panel-body
+        .row
+          .col-md-12
+            %button.btn.btn-success.btn-block
+              New
+              -# popover for new item
