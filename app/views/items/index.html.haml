@@ -1,21 +1,24 @@
-.row
-  -@items.each do |i|
-    .col-md-4.col-sm-6.col-xs-12
-      .panel.panel-default
-        .panel-body
-          .row
-            .col-md-4
-              =i.name
-            .col-md-4
-              =i.last_replaced
-            .col-md-4
-              .pull-right
-                =button_to 'Replace', item_replacements_url(i.id), { remote: true, class: 'btn btn-info btn-sm' }
-  .col-md-4.col-sm-6.col-xs-12
-    .panel.panel-default
-      .panel-body
-        .row
-          .col-md-12
-            %button.btn.btn-success.btn-block
-              New
-              -# popover for new item
+.hero.is-fullheight
+  .hero-body
+    .container.has-text-centered
+      .columns.is-multiline
+        -@items.each do |i|
+          .column.is-one-third-desktop.is-half-tablet
+            .box
+              .columns
+                .column
+                  %p= i.name
+                .column.is-one-fourth
+                  %p= i.last_replaced.try(:strftime, '%D')
+                .column
+                  .field.has-addons
+                    %p.control
+                      %button.button.is-info.replace-item{ 'data-id': i.id } Replace
+                    %p.control
+                      = link_to edit_item_url(i.id), { class: 'button is-info is-outlined' } do
+                        %span.icon.is-small
+                          %i.fa.fa-ellipsis-v
+
+        .column.is-one-third-desktop.is-half-tablet
+          .box
+            = link_to 'New', new_item_url, { class: 'button is-primary button-block', method: :get }

@@ -4,7 +4,7 @@ class ReplacementsController < ApplicationController
 
   def create
     replacement = @item.replacements.create( replaced_at: params[:time] || DateTime.current)
-    redirect_to items_index_url
+    redirect_to items_url
   end
 
   private

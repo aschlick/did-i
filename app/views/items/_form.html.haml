@@ -1,0 +1,32 @@
+=form_for @item do |f|
+
+  -if @item.errors.any?
+    .alert.alert-danger
+      There were errors with your submission
+
+  .field.is-horizontal
+    .field-label.is-normal
+      = f.label :name, { class: 'label' }
+    .field-body
+      .field
+        = f.text_field :name, { class: 'input' }
+        -if @item.errors[:name].any?
+          %p.help.is-danger= @item.errors[:name].join('\n')
+
+
+  .field.is-horizontal
+    .field-label.is-normal
+      = f.label :every, { class: 'label' }
+    .field-body
+      .field.is-grouped
+        = f.number_field :period_count, { class: 'input' }
+      .field
+        .control
+          .select.is-fullwidth
+            = f.select :period_type, ['Years', 'Months', 'Weeks', 'Days', 'Hours'], { selected: @item.period_type || 'Weeks' }, { class: 'form-control' }
+  .field.is-horizontal
+    .field-label
+    .field-body
+      .field
+        .control
+          =f.submit @button_text, class: 'button is-primary'
