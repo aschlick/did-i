@@ -40,6 +40,7 @@ gem 'devise'
 gem 'haml'
 gem 'haml-rails'
 
+gem 'sidekiq'
 
 
 group :development, :test do

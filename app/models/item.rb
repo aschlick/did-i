@@ -1,5 +1,6 @@
 class Item < ApplicationRecord
   has_many :replacements
+  belongs_to :user
 
   attr_accessor :period_count, :period_type
 
@@ -20,10 +21,6 @@ class Item < ApplicationRecord
 
       item.assign_period_from_strings
     end
-  end
-
-  def last_replaced
-    replacements.order(created_at: :desc).first.try(:created_at)
   end
 
   def assign_period_from_strings

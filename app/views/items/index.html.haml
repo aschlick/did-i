@@ -9,7 +9,7 @@
                 .column
                   %p= i.name
                 .column.is-one-fourth
-                  %p= i.last_replaced.try(:strftime, '%D')
+                  %p= i.last_replaced_at.try(:strftime, '%D')
                 .column
                   .field.has-addons
                     %p.control

@@ -2,7 +2,19 @@ addLoadingClass = (ele) ->
   classes = ele.className
   ele.className = [classes, 'is-loading'].join(' ')
 
+removeLoadingClass = (ele) ->
+  classes = ele.className
+  classes = classes.split ' '
+  ind = classes.indexOf 'is-loading'
+  if ind > -1
+    classes.splice ind, 1
+    ele.className = classes.join ' '
+
 pageLoaded = (event) ->
+  Array.from document.getElementsByClassName 'is-loading'
+  .forEach (e) ->
+    removeLoadingClass e
+
   Array.from document.getElementsByClassName 'replace-item'
   .forEach (e) ->
     e.addEventListener 'click', (event) ->
@@ -21,6 +33,7 @@ pageLoaded = (event) ->
           if xhr.status == 200
             Turbolinks.clearCache()
             Turbolinks.visit '/items'
+        removeLoadingClass ele
 
       xhr.send()
 
