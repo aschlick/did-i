@@ -1,5 +1,5 @@
 class Item < ApplicationRecord
-  has_many :replacements
+  has_many :replacements, dependent: :destroy
   belongs_to :user
 
   attr_accessor :period_count, :period_type
@@ -17,7 +17,9 @@ class Item < ApplicationRecord
       item.period_count, item.period_type = item.period.split ' '
 
       item.period_count = item.period_count.to_i
-      item.period_type = item.period_type.titleize
+      if item.period_type
+        item.period_type = item.period_type.titleize
+      end
 
       item.assign_period_from_strings
     end
