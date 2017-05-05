@@ -3,6 +3,7 @@ require 'rails_helper'
 describe Replacement do
 
   before(:all) { @user = User.create(email: 'test@test.com', password: '123456', password_confirmation: '123456') }
+  after(:all) { @user.destroy }
 
   it 'sets item replaced at when created' do
     i = Item.create name: 'test item', period_type: 'years', period_count: 2, user: @user

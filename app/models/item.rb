@@ -9,11 +9,11 @@ class Item < ApplicationRecord
   validates :period_type, presence: true
 
   before_save do
-    assign_period_from_strings
+    assign_period_from_strings unless destroyed?
   end
 
   after_find do |item|
-    if item.period and item.period.class == String
+    if !destroyed? and item.period and item.period.class == String
       item.period_count, item.period_type = item.period.split ' '
 
       item.period_count = item.period_count.to_i
