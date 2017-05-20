@@ -13,5 +13,5 @@ u = User.create(
 u.confirm
 
 (1..10).each do |i|
-  r = Item.create(user_id: u.id, name: "test#{i}")
+  r = Item.create(user: u, name: "test#{i}")
 end
