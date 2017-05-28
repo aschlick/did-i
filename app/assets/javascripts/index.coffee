@@ -10,7 +10,17 @@ removeLoadingClass = (ele) ->
     classes.splice ind, 1
     ele.className = classes.join ' '
 
+handleAlertCleared = ->
+  Array.from document.getElementsByClassName 'notification'
+  .forEach (e) ->
+    Array.from e.getElementsByClassName 'delete'
+    .forEach (btn) ->
+      btn.addEventListener 'click', (event) ->
+        e.remove()
+
 pageLoaded = (event) ->
+  handleAlertCleared()
+
   Array.from document.getElementsByClassName 'is-loading'
   .forEach (e) ->
     removeLoadingClass e
