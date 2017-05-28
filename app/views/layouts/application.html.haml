@@ -10,9 +10,19 @@
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
 
   %body
-    %section
-      .container
-        = yield
+    .container
+      %section.hero.is-fullheight
+        .hero-body
+          .container
+            - flash.each do |key, value|
+              - klass = key
+              - klass = 'warning' if key == 'alert'
+              - klass = 'info' if key == 'notice'
+              .notification{ class: "is-#{klass}"}
+                %button.delete
+                = value
+
+            = yield
 
   %footer
     .container

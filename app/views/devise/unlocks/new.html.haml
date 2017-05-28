@@ -1,13 +1,10 @@
-%section.hero.is-fullheight
-  .hero-body
-    .container
-      %h2.title Resend unlock instructions
-      = form_for(resource, as: resource_name, url: unlock_path(resource_name), html: { method: :post }) do |f|
-        = devise_error_messages!
-        .field
-          = f.label :email, class: 'label'
-          %p.control
-            = f.email_field :email, autofocus: true, class: 'input'
-        .actions
-          = f.submit "Resend unlock instructions", class: 'button is-primary'
-      = render "devise/shared/links"
+%h2.title Resend unlock instructions
+= form_for(resource, as: resource_name, url: unlock_path(resource_name), html: { method: :post }) do |f|
+  = devise_error_messages!
+  .field
+    = f.label :email, class: 'label'
+    %p.control
+      = f.email_field :email, autofocus: true, class: 'input'
+  .actions
+    = f.submit "Resend unlock instructions", class: 'button is-primary'
+= render "devise/shared/links"

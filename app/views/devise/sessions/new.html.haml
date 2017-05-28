@@ -1,23 +1,20 @@
-%section.hero.is-fullheight
-  .hero-body
-    .container
-      %h2.title Log in
+%h2.title Log in
 
-      = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
-        .field
-          = f.label :email, class: 'label'
-          %p.control
-            = f.email_field :email, autofocus: true, class: 'input'
-        .field
-          = f.label :password, class: 'label'
-          %p.control
-            = f.password_field :password, autocomplete: "off", class: 'input'
-        - if devise_mapping.rememberable?
-          .field
-            %p.control
-              %label.checkbox
-                = f.check_box :remember_me
-                Remember Me
-        .actions
-          = f.submit "Log in", class: 'button is-primary'
-      = render "devise/shared/links"
+= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+  .field
+    = f.label :email, class: 'label'
+    %p.control
+      = f.email_field :email, autofocus: true, class: 'input'
+  .field
+    = f.label :password, class: 'label'
+    %p.control
+      = f.password_field :password, autocomplete: "off", class: 'input'
+  - if devise_mapping.rememberable?
+    .field
+      %p.control
+        %label.checkbox
+          = f.check_box :remember_me
+          Remember Me
+  .actions
+    = f.submit "Log in", class: 'button is-primary'
+= render "devise/shared/links"
