@@ -66,7 +66,7 @@ Rails.application.configure do
     domain: 'did-i.com',
     address: 'smtp.sendgrid.net',
     port: 587,
-    authentication: :plain
+    authentication: :plain,
     enable_starttls_auto: true
   }
   config.action_mailer.raise_delivery_errors = false
