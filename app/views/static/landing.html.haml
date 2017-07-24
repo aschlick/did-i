@@ -1,0 +1,52 @@
+!!!
+%html
+  =render partial: 'layouts/header'
+
+  %body
+    %section.hero.is-info
+      .hero-body
+        .container
+          %h1.title
+            Did-I
+          %h2.subtitle
+            Rolling Reminders
+
+    %section.container.container
+      - flash.each do |key, value|
+        - klass = key
+        - klass = 'warning' if key == 'alert'
+        - klass = 'info' if key == 'notice'
+        .notification{ class: "is-#{klass}"}
+          %button.delete
+          = value
+
+    %section.section.container
+      .tile.is-ancestor
+        .tile.is-parent.is-12
+          %article.tile.is-primary.is-child.notification.is-6
+            %p.title Replacements you forget
+            .content
+              %ul
+                %li Contacts
+                %li Furnace Filters
+                %li Toothbrush
+      .tile.is-ancestor
+        .tile.is-parent.is-12
+          .tile.is-3
+          %article.tile.is-danger.is-child.notification.is-6
+            %p.title Automatically Adjusts
+            .content
+              If you replace something early or late, did-i will automatically
+              adjust remiders for you. No need to change calendar reminders.
+      .tile.is-ancestor
+        .tile.is-parent.is-12
+          .tile.is-6
+          %article.tile.is-success.is-child.notification.is-6
+            %p.title Free to Use
+            .content
+              No reason not to sign up! Did-I is currently free and will always
+              have tier. Try it out and see how you like it. We'll be updating as
+              often as we can.
+            .content
+              %a.button.is-outlined{ href: new_user_registration_path } Sign Up
+              %a.button.is-outlined{ href: new_user_session_path } Log In
