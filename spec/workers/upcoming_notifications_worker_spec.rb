@@ -25,4 +25,11 @@ describe UpcomingNotificationsWorker, type: :mailer do
     expect { NotificationsWorker.new.perform }.to change { ActionMailer::Base.deliveries.count } .by 2
   end
 
+  it 'does not send emails after the date' do
+    item = Item.create name: 'test item', period_type: 'Weeks', period_count: 1, user: @user
+    item.replacements.create replaced_at: Date.today - 0.day
+
+    expect { NotificationsWorker.new.perform }.to change { ActionMailer::Base.deliveries.count } .by 0
+  end
+
 end
