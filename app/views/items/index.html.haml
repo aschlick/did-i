@@ -1,13 +1,16 @@
 .columns.is-multiline
   -@items.each do |i|
-    .column.is-one-third-desktop.is-half-tablet
+    .column.is-half-tablet
       .box
         .columns
-          .column
+          .column.is-narrow
             %p= i.name
-          .column.is-one-fourth
-            %p= i.last_replaced_at.try(:strftime, '%D')
           .column
+            %p
+              Replaced
+              = time_ago_in_words i.last_replaced_at if i.last_replaced_at
+              ago
+          .column.is-narrow
             .field.has-addons
               %p.control
                 %button.button.is-info.replace-item{ 'data-id': i.id } Replace
@@ -16,6 +19,6 @@
                   %span.icon.is-small
                     %i.fa.fa-ellipsis-v
 
-  .column.is-one-third-desktop.is-half-tablet
+  .column.is-half-tablet
     .box
       = link_to 'New', new_item_url, { class: 'button is-primary button-block', method: :get }
