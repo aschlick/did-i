@@ -18,7 +18,7 @@ class Item < ApplicationRecord
 
       item.period_count = item.period_count.to_i
       if item.period_type
-        item.period_type = 'months' if item.period_type == 'mons'
+        item.period_type = 'months' if item.period_type == 'mon' || item.period_type == 'mons'
 
         item.period_type = item.period_type.titleize
       end
