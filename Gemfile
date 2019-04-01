@@ -37,7 +37,6 @@ gem 'turbolinks', '~> 5'
 # gem 'capistrano-rails', group: :development
 
 gem 'devise'
-gem 'omniauth-facebook'
 gem 'haml'
 gem 'haml-rails'
 
