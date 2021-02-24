@@ -61,8 +61,8 @@ Rails.application.configure do
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
-    user_name: ENV['SENDGRID_USERNAME'],
-    password: ENV['SENDGRID_PASSWORD'],
+    user_name: "apikey",
+    password: ENV['SENDGRID_API_KEY'],
     domain: 'did-i.com',
     address: 'smtp.sendgrid.net',
     port: 587,
