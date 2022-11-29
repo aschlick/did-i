@@ -1,0 +1,31 @@
+version: '3.9'
+name: didi
+services: 
+  app:
+    build: ./docker/
+    volumes:
+      - .:/app
+      - gem:/usr/local/bundle
+    env_file:
+      - ./docker/app.env
+    depends_on:
+      - database
+    networks: 
+      - default
+      - nginx_web
+
+  database: 
+    image: postgres
+    env_file: 
+      - ./docker/postgres.env
+    volumes:
+      - postgres:/var/lib/postgresql/data
+
+volumes: 
+  gem: 
+  postgres:
+
+networks:
+  default:
+  nginx_web:
+    external: true

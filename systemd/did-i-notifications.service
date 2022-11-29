@@ -1,0 +1,9 @@
+[Unit]
+Description=Send did-i notifications
+
+[Service]
+WorkingDirectory=/home/alex/code/Did-i/
+ExecStart=docker compose exec app rails send_reminders
+
+[Install]
+WantedBy=multi-user.target
