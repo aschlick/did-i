@@ -8,7 +8,7 @@ class ItemsController < ApplicationController
   end
 
   def create
-    @button_text = "Create"
+    @button_text = 'Create'
     @item = Item.new
     assign_params
     @item.save
@@ -21,12 +21,12 @@ class ItemsController < ApplicationController
   end
 
   def destroy
-    @item.destroy
+    Item.find(params[:id]).destroy
     redirect_to items_path
   end
 
   def edit
-    @button_text = "Update"
+    @button_text = 'Update'
     @item = Item.find(params[:id])
   end
 
