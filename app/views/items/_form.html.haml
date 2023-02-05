@@ -16,7 +16,7 @@
 
   .field.is-horizontal
     .field-label.is-normal
-      = f.label :every, { class: 'label' }
+      = f.label :every, { class: 'label' }, for: :period_count
     .field-body
       .field.is-grouped
         = f.number_field :period_count, { class: 'input' }
@@ -29,4 +29,9 @@
     .field-body
       .field
         .control
-          =f.submit @button_text, class: 'button is-primary'
+          = link_to 'Delete', @item, method: :delete, class: 'button is-danger'
+      - if @item.persisted?
+        .field
+          .control.is-pulled-right
+            = f.submit @button_text, class: 'button is-primary'
+

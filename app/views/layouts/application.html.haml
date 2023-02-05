@@ -19,7 +19,7 @@
       %section.hero.is-fullheight
         .hero-body
           .container
-            - flash.each do |key, value|
+            - flash.to_h.slice(:alert, :notice, :error, :success, :link, :danger).each do |key, value|
               - klass = key
               - klass = 'warning' if key == 'alert'
               - klass = 'info' if key == 'notice'

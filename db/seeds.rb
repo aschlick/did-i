@@ -9,9 +9,10 @@
 u = User.create(
   email: 'test@test.com',
   password: '123456',
-  password_confirmation: '123456')
+  password_confirmation: '123456'
+)
 u.confirm
 
 (1..10).each do |i|
-  r = Item.create(user: u, name: "test#{i}")
+  Item.create!(user: u, name: "test#{i}", period_type: 'weeks', period_count: 1)
 end
