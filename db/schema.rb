@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_02_02_045647) do
+ActiveRecord::Schema[7.0].define(version: 2024_02_02_141408) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -24,12 +24,30 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_02_045647) do
     t.index ["user_id"], name: "index_items_on_user_id"
   end
 
+  create_table "notification_jobs", force: :cascade do |t|
+    t.bigint "user_id"
+    t.string "jid"
+    t.integer "status", default: 0
+    t.text "message"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_notification_jobs_on_user_id"
+  end
+
   create_table "replacements", id: :serial, force: :cascade do |t|
     t.integer "item_id"
     t.datetime "created_at", precision: nil, null: false
     t.datetime "updated_at", precision: nil, null: false
     t.datetime "replaced_at", precision: nil
     t.index ["item_id"], name: "index_replacements_on_item_id"
+  end
+
+  create_table "user_preferences", force: :cascade do |t|
+    t.bigint "user_id"
+    t.time "notification_time", default: "2000-01-01 00:00:00"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_user_preferences_on_user_id"
   end
 
   create_table "users", id: :serial, force: :cascade do |t|

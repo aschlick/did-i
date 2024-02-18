@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-ruby '3.2.0'
+ruby '3.2.3'
 
 git_source(:github) do |repo_name|
   repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?("/")
@@ -39,10 +39,10 @@ gem 'turbolinks'
 gem 'devise'
 gem 'haml'
 gem 'haml-rails'
+gem 'sidekiq'
 
 group :development, :test do
-  # Call 'byebug' anywhere in the code to stop execution and get a debugger console
-  gem 'byebug', platform: :mri
+  gem 'debug'
   gem 'faker'
   gem 'rspec-rails'
 end

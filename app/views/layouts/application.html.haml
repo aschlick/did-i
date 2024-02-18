@@ -1,5 +1,5 @@
 !!!
-%html
+%html{lang: 'en'}
   =render partial: 'layouts/header'
 
   %body
@@ -11,21 +11,26 @@
 
         .navbar-end
           -if user_signed_in?
-            =link_to 'Sign Out', |
-              destroy_user_session_path(current_user), |
-              method: :delete, |
-              class: 'navbar-item'
+            .navbar-item
+              =link_to(edit_user_preference_path, class: 'button', title: "Preferences") do
+                %i.fa.fa-gear
+
+            .navbar-item
+              =link_to 'Sign Out', |
+                destroy_user_session_path(current_user), |
+                method: :delete, |
+                class: 'button'
 
       %section.hero.is-fullheight
         .hero-body
           .container
-            - flash.to_h.slice(:alert, :notice, :error, :success, :link, :danger).each do |key, value|
+            - flash.to_h.slice(*%w[alert notice error success link danger]).each do |key, value|
               - klass = key
               - klass = 'warning' if key == 'alert'
               - klass = 'info' if key == 'notice'
               .notification{ class: "is-#{klass}"}
-                %button.delete
                 = value
+                %i.delete
 
             = yield
 

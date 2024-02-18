@@ -2,11 +2,10 @@ require 'rails_helper'
 
 describe Replacement do
 
-  before(:all) { @user = User.create(email: 'test@test.com', password: '123456', password_confirmation: '123456') }
-  after(:all) { @user.destroy }
+  let(:user) { User.create(email: 'test@test.com', password: '123456', password_confirmation: '123456') }
 
   it 'sets item replaced at when created' do
-    i = Item.create name: 'test item', period_type: 'years', period_count: 2, user: @user
+    i = Item.create name: 'test item', period_type: 'years', period_count: 2, user: user
 
     i.replacements.create replaced_at: Date.yesterday
 
@@ -15,7 +14,7 @@ describe Replacement do
   end
 
   it 'it only updates replaced at when newer date' do
-    i = Item.create name: 'test item', last_replaced_at: Date.today.to_datetime, period_type: 'years', period_count: 2, user: @user
+    i = Item.create name: 'test item', last_replaced_at: Date.today.to_datetime, period_type: 'years', period_count: 2, user: user
 
     i.replacements.create replaced_at: Date.yesterday
 

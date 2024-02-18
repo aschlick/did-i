@@ -8,6 +8,9 @@ class Item < ApplicationRecord
   validates :period_count, presence: true
   validates :period_type, presence: true
 
+  scope :past_due, -> { where("date_trunc('day', last_replaced_at + period) <= (TIMESTAMP \'today\')") }
+  scope :due_tomorrow, -> { where("date_trunc('day', last_replaced_at + period) = (TIMESTAMP \'tomorrow\')") }
+
   before_save do
     assign_period_from_strings unless destroyed?
   end
