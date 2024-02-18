@@ -28,7 +28,7 @@
               - klass = key
               - klass = 'warning' if key == 'alert'
               - klass = 'info' if key == 'notice'
-              .notification{ class: "is-#{klass}"}
+              .notification.flash{ class: "is-#{klass}"}
                 = value
                 %i.delete
 
