@@ -13,10 +13,9 @@
         -if @item.errors[:name].any?
           %p.help.is-danger= @item.errors[:name].join('\n')
 
-
-  .field.is-horizontal
+  %field-set.field.is-horizontal
     .field-label.is-normal
-      = f.label :every, { class: 'label' }, for: :period_count
+      %legend.label Every
     .field-body
       .field.is-grouped
         = f.number_field :period_count, { class: 'input' }
@@ -24,6 +23,7 @@
         .control
           .select.is-fullwidth
             = f.select :period_type, ['Years', 'Months', 'Weeks', 'Days', 'Hours'], { selected: @item.period_type || 'Weeks' }, { class: 'form-control' }
+
   .field.is-horizontal
     .field-label
     .field-body

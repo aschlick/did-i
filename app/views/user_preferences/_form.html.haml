@@ -1,0 +1,14 @@
+= form_for @prefences do |f|
+  .field.is-horizontal
+    .field-label.is-normal
+      = f.label :notification_time, { class: 'label' }
+    .field-body
+      .field
+        = f.time_field :notification_time, { class: 'input' }
+
+  .field.is-horizontal
+    .field-label
+    .field-body
+      .field
+        .control.is-pulled-right
+          = f.submit action_text, class: 'button is-primary'

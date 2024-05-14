@@ -1,3 +1,5 @@
+require "sidekiq/web"
+
 Rails.application.routes.draw do
   devise_for :users
   root 'static#landing'
@@ -7,5 +9,11 @@ Rails.application.routes.draw do
 
   resources :items do
     resources :replacements
+  end
+
+  resource :user_preference
+
+  authenticate :user, lambda { |u| u.admin? } do
+    mount Sidekiq::Web => '/sidekiq'
   end
 end
