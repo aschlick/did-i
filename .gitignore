@@ -24,3 +24,5 @@ config/database.yml
 public/assets/*
 
 docker/*.env
+
+spec/examples.txt

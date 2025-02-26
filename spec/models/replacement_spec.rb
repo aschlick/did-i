@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe Replacement do
+RSpec.describe Replacement do
 
   let(:user) { User.create(email: 'test@test.com', password: '123456', password_confirmation: '123456') }
 

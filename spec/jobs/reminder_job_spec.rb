@@ -3,7 +3,7 @@ require 'sidekiq/testing'
 
 Sidekiq::Testing.fake!
 
-describe ReminderJob, type: :job do
+RSpec.describe ReminderJob, type: :job do
   let(:user) { User.create(email: 'test@test.com', password: '123456', password_confirmation: '123456') }
   let!(:notification_job) { user.notification_jobs.create }
 
