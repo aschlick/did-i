@@ -79,6 +79,7 @@ GEM
     bigdecimal (3.1.9)
     bindex (0.8.1)
     builder (3.3.0)
+    byebug (12.0.0)
     coffee-rails (5.0.0)
       coffee-script (>= 2.2.0)
       railties (>= 5.2.0)
@@ -90,9 +91,6 @@ GEM
     connection_pool (2.5.0)
     crass (1.0.6)
     date (3.4.1)
-    debug (1.10.0)
-      irb (~> 1.10)
-      reline (>= 0.3.8)
     devise (4.9.4)
       bcrypt (~> 3.0)
       orm_adapter (~> 0.1)
@@ -334,6 +332,7 @@ DEPENDENCIES
   rspec-rails
   rubocop
   sass-rails
+  sidekiq
   spring
   spring-watcher-listen
   turbolinks
