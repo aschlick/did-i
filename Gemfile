@@ -40,6 +40,7 @@ gem 'devise'
 gem 'haml'
 gem 'haml-rails'
 gem 'sidekiq'
+gem 'recaptcha'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

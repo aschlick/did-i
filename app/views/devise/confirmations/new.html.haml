@@ -7,5 +7,5 @@
     %p.control
       = f.email_field :email, autofocus: true, value: (resource.pending_reconfirmation? ? resource.unconfirmed_email : resource.email), class: 'input'
   .actions
-    = f.submit "Resend confirmation instructions", class: 'button is-info'
+    = invisible_recaptcha_tags(text: "Resend confirmation instructions", class: 'button is-info')
 = render "devise/shared/links"

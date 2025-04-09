@@ -6,5 +6,5 @@
     %p.control
       = f.email_field :email, autofocus: true, class: 'input'
   .actions
-    = f.submit "Send me reset password instructions", class: 'button is-info'
+    = invisible_recaptcha_tags(text: "Send me reset password instructions", class: 'button is-info')
 = render "devise/shared/links"

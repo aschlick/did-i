@@ -1,6 +1,6 @@
 %h2.title Sign Up
 = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
-  = devise_error_messages!
+  = render "devise/shared/error_messages", resource: resource
   .field
     = f.label :email, class: 'label'
     %p.control
@@ -18,5 +18,5 @@
     %p.control
       = f.password_field :password_confirmation, autocomplete: "off", class: 'input'
   .actions
-    = f.submit "Sign up", class: 'button is-success'
+    = invisible_recaptcha_tags(text: 'Submit', class: 'button is-success')
 = render "devise/shared/links"

@@ -16,5 +16,5 @@
           = f.check_box :remember_me
           Remember Me
   .actions
-    = f.submit "Log in", class: 'button is-primary'
+    = invisible_recaptcha_tags(text: "Log in", class: 'button is-primary')
 = render "devise/shared/links"
